@@ -1,7 +1,6 @@
 [package]
-name = "learning-rust"
+name = "Tic Tac Toe"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tabled="0.13.0"
