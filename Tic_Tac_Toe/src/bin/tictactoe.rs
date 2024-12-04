@@ -99,7 +99,7 @@ impl Game {
         None
     }
 
-    fn find_best_move(&self, human: Player) -> i8 {
+    fn find_best_move(&self, human: &Player) -> i8 {
         let mut best_move = 0;
         let mut best_value = i8::MIN;
 
@@ -109,7 +109,7 @@ impl Game {
                 new_game.board.positions.insert(pos, Some(new_game.turn));
 
                 let move_value = new_game.minimax(
-                    new_game.turn.complementary(), 0, human.clone());
+                    new_game.turn.complementary(), 0, human);
 
                 if move_value > best_value {
                     best_value = move_value;
@@ -120,7 +120,7 @@ impl Game {
         best_move
     }
 
-    fn minimax(&self, is_maximizing: Sign, depth: i8, human: Player) -> i8 {
+    fn minimax(&self, is_maximizing: Sign, depth: i8, human: &Player) -> i8 {
         if let Some(winner) = self.check_winner() {
             let score_adjustment = match winner {
                 Sign::X => 10,
@@ -128,7 +128,7 @@ impl Game {
                 _ => 0,
             };
     
-            return if matches!(human, Player::Human(Sign::X)) {
+            return if matches!(human, &Player::Human(Sign::X)) {
                 depth - score_adjustment
             } else {
                 score_adjustment - depth
@@ -152,7 +152,7 @@ impl Game {
 
                 let move_value =
                     new_game.minimax(
-                        is_maximizing.complementary(), depth + 1, human.clone()
+                        is_maximizing.complementary(), depth + 1, human
                     );
                     
                 best_value = match is_maximizing == self.turn {
@@ -164,7 +164,7 @@ impl Game {
         best_value
     }
 
-    fn make_move(&mut self, player: Player, placement: &str) -> Result<(), String> {
+    fn make_move(&mut self, player: &Player, placement: &str) -> Result<(), String> {
         let placement = match placement.parse::<i8>() {
             Ok(s) => s,
             Err(_) => return Err("Invalid Position Try Again (1-9)".to_string()),
@@ -177,7 +177,7 @@ impl Game {
         if self.board.positions[&placement].is_none() {
             self.board
                 .positions
-                .insert(placement, Some(get_sign(player.clone())));
+                .insert(placement, Some(get_sign(player)));
             Ok(())
         } else {
             Err("Position already occupied".to_string())
@@ -185,9 +185,9 @@ impl Game {
     }
 }
 
-fn get_sign(player: Player) -> Sign {
+fn get_sign(player: &Player) -> Sign {
     match player {
-        Player::Human(sign) | Player::Computer(sign) => sign,
+        &Player::Human(sign) | &Player::Computer(sign) => sign,
     }
 }
 
@@ -226,7 +226,7 @@ fn main() {
     });
 
     let mut game = Game::new(player.clone());
-    let mut curr_player = player.clone();
+    let mut curr_player = &player;
 
     game.board.display();
     println!("Computer is waitiing for your move");
@@ -238,7 +238,7 @@ fn main() {
                 print(&format!("[{:?}] Enter your move (1-9): ", game.turn));
                 io::stdin().read_line(&mut input).expect("Failed to read input");
 
-                if let Err(e) = game.make_move(curr_player.clone(), input.trim()) {
+                if let Err(e) = game.make_move(&curr_player, input.trim()) {
                     game.board.display();
                     println!("{}", e);
                     continue;
@@ -246,8 +246,8 @@ fn main() {
             }
 
             Player::Computer(_) => {
-                let best_move = game.find_best_move(player.clone()).to_string();
-                game.make_move(computer.clone(), &best_move.clone()).unwrap();
+                let best_move = game.find_best_move(&player).to_string();
+                game.make_move(&computer, &best_move).unwrap();
                 game.board.display();
                 println!("[{:?}] Computer chose {}", game.turn, best_move);
             }
@@ -257,18 +257,18 @@ fn main() {
 
         if game.check_winner().is_some() {
             game.board.display();
-            println!("\n{:?} wins!", curr_player.clone());
+            println!("\n{:?} wins!", curr_player);
             break;
         }
 
         curr_player = match curr_player {
-            Player::Human(_) => computer.clone(),
-            Player::Computer(_) => player.clone(),
+            &Player::Human(_) => &computer,
+            &Player::Computer(_) => &player,
         }
     }
 
     if game.check_winner().is_none() {
         game.board.display();
-        println!("It's a draw!");
+        println!("\nIt's a draw!");
     }
 }
