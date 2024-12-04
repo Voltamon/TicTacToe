@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe in Rust</title>
 </head>
 <body>
     <h1><--- Tic Tac Toe ---></h1>
@@ -11,10 +8,10 @@
     <h2>Features</h2>
     <ul>
         <li>Human vs Computer gameplay</li>
-        <li>Minimax algorithm for computer moves</li>
+        <li>Minimax algorithm for AI moves</li>
         <li>Dynamic board display</li>
-        <li>Input validation</li>
     </ul>
+    <br>
     <h2>Getting Started</h2>
     <p>To set up the project, follow these steps:</p>
     <ol>
