@@ -240,7 +240,7 @@ fn main() {
 
                 if let Err(e) = game.make_move(&curr_player, input.trim()) {
                     game.board.display();
-                    println!("{}", e);
+                    println!("\n{}", e);
                     continue;
                 }
             }
@@ -249,7 +249,7 @@ fn main() {
                 let best_move = game.find_best_move(&player).to_string();
                 game.make_move(&computer, &best_move).unwrap();
                 game.board.display();
-                println!("[{:?}] Computer chose {}", game.turn, best_move);
+                println!("\n[{:?}] Computer chose {}", game.turn, best_move);
             }
         }
 
