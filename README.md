@@ -25,6 +25,6 @@
         <pre><code>cargo run -q --bin tictactoe.rs</code></pre>
     </ol>
     <h2>Example Output</h2>
-    <img src="[https://i.ibb.co/nBkvPhK/image.png](https://i.ibb.co/zR7qv2S/TICTACTOE-output.png)">
+    <img src="https://i.ibb.co/zR7qv2S/TICTACTOE-output.png">
 </body>
 </html>
