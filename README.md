@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-    <h1><--- Tic Tac Toe ---></h1>
+    <h1>Tic Tac Toe</h1>
     <p>This is a simple command-line implementation of the classic Tic Tac Toe game, written in Rust. The game allows a human player to play against a computer opponent that uses the minimax algorithm to determine the best moves.</p>
     <h2>Features</h2>
     <ul>
@@ -11,17 +11,16 @@
         <li>Minimax algorithm for AI moves</li>
         <li>Dynamic board display</li>
     </ul>
-    <br>
     <h2>Getting Started</h2>
     <p>To set up the project, follow these steps:</p>
     <ol>
         <li>Ensure you have Rust installed on your machine. If not, you can install it from <a href="https://www.rust-lang.org/tools/install">rust-lang.org</a>.</li>
         <li>Clone this repository:</li>
-        <pre><code>git clone https://github.com/yourusername/tic-tac-toe-rust.git</code></pre>
+        <pre><code>git clone https://github.com/Voltamon/TicTacToe.git</code></pre>
         <li>Navigate into the project directory:</li>
-        <pre><code>cd tic-tac-toe-rust</code></pre>
+        <pre><code>cd Tic_Tac_Toe</code></pre>
         <li>Compile and run the project:</li>
-        <pre><code>cargo run</code></pre>
+        <pre><code>cargo run -q --bin tictactoe.rs</code></pre>
     </ol>
     <h2>Example Output</h2>
 </body>
