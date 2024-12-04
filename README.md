@@ -4,7 +4,9 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <p>This is a simple command-line implementation of the classic Tic Tac Toe game, written in Rust. The game allows a human player to play against a computer opponent that uses the minimax algorithm to determine the best moves.</p>
+    <p>This is a simple command-line implementation of the classic Tic Tac Toe game, written in Rust. The game allows a human player to play against a computer opponent that uses the minimax algorithm to determine the best moves.
+
+[Discaimer] I am still learning rust. There may be scope for improvement in the code.</p>
     <h2>Features</h2>
     <ul>
         <li>Human vs Computer gameplay</li>
