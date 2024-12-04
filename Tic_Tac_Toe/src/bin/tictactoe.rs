@@ -229,7 +229,7 @@ fn main() {
     let mut curr_player = &player;
 
     game.board.display();
-    println!("Computer is waitiing for your move");
+    println!("\nComputer is waitiing for your move");
 
     while game.check_state() {
         match curr_player {
