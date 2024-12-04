@@ -8,7 +8,7 @@
     <h2>Features</h2>
     <ul>
         <li>Human vs Computer gameplay</li>
-        <li>Minimax algorithm for AI moves</li>
+        <li>Minimax Algorithm for AI moves</li>
         <li>Dynamic board display</li>
     </ul>
     <h2>Getting Started</h2>
@@ -23,5 +23,6 @@
         <pre><code>cargo run -q --bin tictactoe.rs</code></pre>
     </ol>
     <h2>Example Output</h2>
+    <img src="https://i.ibb.co/nBkvPhK/image.png">
 </body>
 </html>
